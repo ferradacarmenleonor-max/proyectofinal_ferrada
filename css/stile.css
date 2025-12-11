@@ -1,0 +1,177 @@
+
+/* ==========================================================
+   1. ESTILOS BASE Y TIPOGRAFÍA
+   ========================================================== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4a6fa1;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #4a6fa1;
+    border-bottom: 2px solid #d9e2ec;
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* ==========================================================
+   2. LAYOUT PRINCIPAL (USANDO GRID O FLEXBOX)
+   ========================================================== */
+/* Usamos Flexbox en el body para organizar el contenido principal (main) y el carrito (aside) */
+body > main {
+    flex-grow: 1; /* Permite que la sección principal ocupe el espacio disponible */
+    padding-right: 20px;
+}
+
+/* Contenedor principal para organizar productos y carrito */
+main {
+    display: flex; /* Esto se usará si quieres el carrito al lado de los productos */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para el contenedor de los productos (Grid para la cuadrícula) */
+#supplements-container {
+    display: grid;
+    /* Muestra de 1 a 3 columnas. Se ajusta automáticamente al ancho de la pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+/* Estilos de la tarjeta de suplemento */
+.supplement-item {
+    background: #ffffff;
+    border: 1px solid #d9e2ec;
+    padding: 20px; /* Aumentado un poco el padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra más pronunciada */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el botón 'Comprar' hacia abajo */
+}
+
+/* ==========================================================
+   3. ESTILOS DE BOTONES
+   ========================================================== */
+button {
+    /* Estilos base (mantienes tus estilos) */
+    background: #87a8d0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Transición suave */
+    width: 100%; /* El botón Comprar ocupa todo el ancho de la tarjeta */
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #6d8cb3;
+}
+
+/* Botón Principal/Finalizar Compra (Color más destacado) */
+.btn-primary {
+    background: #4CAF50; /* Verde */
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+/* Botón Secundario/Vaciar Carrito */
+.btn-secondary {
+    background: #f44336; /* Rojo */
+}
+
+.btn-secondary:hover {
+    background: #d32f2f;
+}
+
+/* Botón Eliminar Individual (Pequeño) */
+.btn-eliminar {
+    background: #f44336; 
+    padding: 5px 10px;
+    font-size: 0.8em;
+    width: auto; /* Anula el 100% de width */
+    margin-left: 10px;
+}
+
+/* ==========================================================
+   4. ESTILOS DEL CARRITO
+   ========================================================== */
+
+/* Contenedor del carrito (El aside completo, si usaste la sugerencia de HTML) */
+#carrito-aside {
+    width: 300px; /* Ancho fijo para la barra lateral */
+    min-width: 300px;
+    margin-top: 25px; /* Alineado con los títulos de productos */
+}
+
+#cart-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky; /* Hace que el carrito se quede fijo al hacer scroll */
+    top: 20px;
+}
+
+/* Estilo para cada item en el carrito */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.cart-item p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Contenedor para los botones Finalizar y Vaciar */
+.cart-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.cart-actions button {
+    flex-basis: 50%; /* Divide el espacio a la mitad */
+    width: auto;
+}
+
+/* ==========================================================
+   5. MEDIA QUERIES (RESPONSIVE)
+   ========================================================== */
+@media (max-width: 900px) {
+    /* En pantallas pequeñas, apila el carrito debajo de los productos */
+    main {
+        flex-direction: column;
+    }
+
+    #carrito-aside {
+        width: 100%; /* El carrito ocupa todo el ancho */
+        min-width: 100%;
+        margin-top: 0;
+    }
+
+    /* Ajuste de margen para evitar que se superponga */
+    #cart-container {
+        position: relative; /* Desactiva el sticky en móviles */
+    }
+}
